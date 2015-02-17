@@ -1,10 +1,13 @@
-## Put comments here that give an overall description of what your
-## functions do
-
-## Write a short comment describing this function
+## FUNCTION makeCacheMatrix
+## Receives x = matrix(), class maxtrix.
+##
+##      - In the last code lines I creat a variable called init that
+##      shows you that makeCacheMatrix creates a list of four elements.
+##
+##      - These elements will contain, via "set" and "setinverse" the matrix
+##      and its inverse, which will be called by init$get and init$getinverse
 
 makeCacheMatrix <- function(x = matrix()) {
-<<<<<<< HEAD
         i <- NULL
         set <- function(y) {
                 x <<- y
@@ -22,17 +25,18 @@ makeCacheMatrix <- function(x = matrix()) {
         list(set = set, get= get,
              setinverse = setinverse, 
              getinverse = getinverse)
-=======
-
->>>>>>> 7f657dd22ac20d22698c53b23f0057e1a12c09b7
 }
 
 
-## Write a short comment describing this function
+## cacheSolve is a function that receives the list created by
+## the function makeCacheMatrix and does two things:
+##
+##      - if the inverse is already calculated (x$getinverse returns null)
+##      then it caches it.
+##      - else, the function cacheSolve calculates the inverse and returns it.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-<<<<<<< HEAD
         i <- x$getinverse()
         if(!is.null(i)){
                 message("getting cached data")
@@ -44,6 +48,16 @@ cacheSolve <- function(x, ...) {
         i
 }
 
+## In the line codes below you will find an example of how you can use
+## these functions. The first one (Variation #1) set the inverse manually
+## so that the cacheSolve function will not calculate the inverse.
+## The second one (Variation #2) is forced to calculate the inverse since
+## the "init" list has now no inverse inside.
+## If you try bigger matrices you could use Rprof() to
+## check that, indeed, caching is efficient.
+
+## Example code lines:
+## -------------------
 
 ## Variation #1 - Mean is cached and retrieved from cache
 ## The next piece of code is tested and works OK.
@@ -61,6 +75,3 @@ init<-makeCacheMatrix(matrix(c(1, -1, 0, 2, 1, 0, 0, -1, 1), 3, 3))
 mt<-init$get()
 ## Result! (calculated if there is no previous inverse stored)
 cacheSolve(init)
-=======
-}
->>>>>>> 7f657dd22ac20d22698c53b23f0057e1a12c09b7
